@@ -42,45 +42,47 @@
             overflow-x: hidden;
         }
 
-        /* ========== 极简导航栏 ========== */
+        /* ========== 极简导航栏 - 更轻更细 ========== */
         nav {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
-            padding: 1.2rem 2.5rem;
+            padding: 0.6rem 3rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
             z-index: 1000;
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(8px);
         }
 
         .nav-logo {
-            font-weight: 600;
-            font-size: 1.1rem;
+            font-weight: 300;
+            font-size: 0.85rem;
             color: var(--text);
             text-decoration: none;
-            letter-spacing: -0.02em;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
         }
 
         .nav-links {
             display: flex;
-            gap: 2.5rem;
+            gap: 2rem;
             list-style: none;
         }
 
         .nav-links a {
-            color: var(--text-light);
+            color: var(--text-muted);
             text-decoration: none;
-            font-size: 0.9rem;
-            font-weight: 500;
+            font-size: 0.75rem;
+            font-weight: 400;
+            letter-spacing: 0.05em;
             transition: color var(--transition);
         }
 
         .nav-links a:hover {
-            color: var(--accent);
+            color: var(--text);
         }
 
         .mobile-menu-btn {
@@ -312,7 +314,7 @@
 
         .btn {
             padding: 0.85rem 1.8rem;
-            border-radius: 8px;
+            border-radius: 4px;
             font-size: 0.95rem;
             font-weight: 500;
             text-decoration: none;
@@ -433,7 +435,7 @@
 
         .stat-card {
             background: var(--bg);
-            border-radius: 8px;
+            border-radius: 4px;
             padding: 2rem;
             text-align: center;
             transition: all var(--transition);
@@ -442,7 +444,7 @@
 
         .stat-card:hover {
             transform: translateY(-2px);
-            box-shadow: 0 4px 12px var(--shadow-hover);
+            box-shadow: 0 2px 6px var(--shadow-hover);
         }
 
         .stat-number {
@@ -486,7 +488,7 @@
 
         .timeline-content {
             background: var(--bg);
-            border-radius: 8px;
+            border-radius: 4px;
             padding: 2rem;
             transition: all var(--transition);
             box-shadow: 0 1px 3px var(--shadow);
@@ -494,7 +496,7 @@
 
         .timeline-content:hover {
             transform: translateY(-2px);
-            box-shadow: 0 4px 12px var(--shadow-hover);
+            box-shadow: 0 2px 6px var(--shadow-hover);
         }
 
         .timeline-date {
@@ -533,7 +535,7 @@
 
         .card {
             background: var(--bg);
-            border-radius: 8px;
+            border-radius: 4px;
             padding: 2rem;
             transition: all var(--transition);
             box-shadow: 0 1px 3px var(--shadow);
@@ -541,7 +543,7 @@
 
         .card:hover {
             transform: translateY(-2px);
-            box-shadow: 0 8px 24px var(--shadow-hover);
+            box-shadow: 0 2px 6px var(--shadow-hover);
         }
 
         .project-icon {
@@ -598,7 +600,7 @@
 
         .experience-card {
             background: var(--bg);
-            border-radius: 8px;
+            border-radius: 4px;
             padding: 2rem;
             display: flex;
             gap: 1.25rem;
@@ -608,7 +610,7 @@
 
         .experience-card:hover {
             transform: translateY(-2px);
-            box-shadow: 0 8px 24px var(--shadow-hover);
+            box-shadow: 0 2px 6px var(--shadow-hover);
         }
 
         .experience-icon {
@@ -650,7 +652,7 @@
 
         .award-card {
             background: var(--bg);
-            border-radius: 8px;
+            border-radius: 4px;
             padding: 1.5rem;
             display: flex;
             align-items: center;
@@ -661,7 +663,7 @@
 
         .award-card:hover {
             transform: translateY(-2px);
-            box-shadow: 0 4px 12px var(--shadow-hover);
+            box-shadow: 0 2px 6px var(--shadow-hover);
         }
 
         .award-icon {
@@ -691,7 +693,7 @@
 
         .skill-card {
             background: var(--bg);
-            border-radius: 8px;
+            border-radius: 4px;
             padding: 1.5rem 2rem;
             display: flex;
             flex-direction: column;
@@ -704,7 +706,7 @@
 
         .skill-card:hover {
             transform: translateY(-2px);
-            box-shadow: 0 4px 12px var(--shadow-hover);
+            box-shadow: 0 2px 6px var(--shadow-hover);
         }
 
         .skill-icon {
@@ -747,7 +749,7 @@
 
         .contact-card {
             background: var(--bg);
-            border-radius: 8px;
+            border-radius: 4px;
             padding: 1.75rem;
             transition: all var(--transition);
             text-decoration: none;
@@ -758,7 +760,7 @@
 
         .contact-card:hover {
             transform: translateY(-2px);
-            box-shadow: 0 4px 12px var(--shadow-hover);
+            box-shadow: 0 2px 6px var(--shadow-hover);
         }
 
         .contact-card:hover .contact-value {
@@ -793,7 +795,7 @@
             width: 48px;
             height: 48px;
             background: var(--bg);
-            border-radius: 8px;
+            border-radius: 4px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -805,7 +807,7 @@
 
         .social-link:hover {
             transform: translateY(-2px);
-            box-shadow: 0 4px 12px var(--shadow-hover);
+            box-shadow: 0 2px 6px var(--shadow-hover);
             color: var(--accent);
         }
 
@@ -841,61 +843,6 @@
             color: var(--accent);
         }
 
-        /* ========== 点赞功能 ========== */
-        .like-section {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-        }
-
-        .stat-item {
-            display: flex;
-            align-items: center;
-            gap: 0.4rem;
-            color: var(--text-muted);
-            font-size: 0.85rem;
-        }
-
-        .stat-item svg {
-            width: 16px;
-            height: 16px;
-        }
-
-        .like-btn {
-            display: flex;
-            align-items: center;
-            gap: 0.4rem;
-            padding: 0.5rem 1rem;
-            background: var(--bg);
-            border: 1px solid var(--divider);
-            border-radius: 6px;
-            cursor: pointer;
-            transition: all var(--transition);
-            font-size: 0.9rem;
-            color: var(--text-light);
-        }
-
-        .like-btn:hover:not(:disabled) {
-            border-color: #FF6B6B;
-            color: #FF6B6B;
-            transform: translateY(-2px);
-        }
-
-        .like-btn.liked {
-            background: #FFF5F5;
-            border-color: #FF6B6B;
-            color: #E53E3E;
-        }
-
-        .like-btn:disabled {
-            cursor: not-allowed;
-        }
-
-        .like-btn svg {
-            width: 16px;
-            height: 16px;
-        }
-
         /* ========== Toast 提示 ========== */
         .toast {
             position: fixed;
@@ -905,7 +852,7 @@
             background: var(--text);
             color: white;
             padding: 1rem 2rem;
-            border-radius: 8px;
+            border-radius: 4px;
             font-size: 0.95rem;
             z-index: 9999;
             opacity: 0;
@@ -1373,20 +1320,6 @@
             <p class="footer-text">
                 © 2025 刘家硕 (Jasper LIU)
             </p>
-            <div class="like-section">
-                <span class="stat-item">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/>
-                    </svg>
-                    <span id="busuanzi_value_site_pv">-</span> 次浏览
-                </span>
-                <button class="like-btn" id="likeBtn" onclick="addLike()">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
-                    </svg>
-                    <span id="like-count">-</span>
-                </button>
-            </div>
         </div>
     </footer>
 
@@ -1397,196 +1330,12 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
 
     <script>
-        // ========== 全局点赞功能（基于 JSONbin.io） ==========
-        
-        // ========== 配置区域 - 请根据您的 JSONbin.io 配置修改 ==========
-        const LIKE_CONFIG = {
-            // JSONbin.io API 配置
-            // 请访问 https://jsonbin.io 创建免费存储桶，获取以下信息
-            JSONBIN_API_KEY: '$2a$10$YOUR_API_KEY_HERE',  // 替换为您的 API Key
-            JSONBIN_BIN_ID: 'YOUR_BIN_ID_HERE',             // 替换为您的 Bin ID
-            JSONBIN_API_URL: 'https://api.jsonbin.io/v3/b',
-            
-            // 本地存储键名
-            LIKED_KEY: 'jasper-has-liked',
-            LIKED_AT_KEY: 'jasper-liked-at',
-            
-            // API 请求头
-            getHeaders() {
-                return {
-                    'Content-Type': 'application/json',
-                    'X-Master-Key': this.JSONBIN_API_KEY
-                };
-            }
-        };
-
-        // 全局变量
-        let currentLikes = 0;
-        let isLoading = false;
-
-        // 显示 Toast 提示
-        function showToast(messageZh, messageEn) {
-            const toast = document.getElementById('toast');
-            const line1 = toast.querySelector('.line1');
-            const line2 = toast.querySelector('.line2');
-            
-            line1.textContent = messageZh;
-            line2.textContent = messageEn;
-            
-            toast.classList.add('show');
-            
-            setTimeout(() => {
-                toast.classList.remove('show');
-            }, 3000);
-        }
-
-        // 从远程获取点赞数
-        async function fetchLikes() {
-            try {
-                const response = await fetch(`${LIKE_CONFIG.JSONBIN_API_URL}/${LIKE_CONFIG.JSONBIN_BIN_ID}/latest`, {
-                    method: 'GET',
-                    headers: LIKE_CONFIG.getHeaders()
-                });
-                
-                if (!response.ok) {
-                    throw new Error('Network response was not ok');
-                }
-                
-                const data = await response.json();
-                
-                // JSONbin.io 返回格式: { record: { likes: number } }
-                if (data && data.record && typeof data.record.likes === 'number') {
-                    return data.record.likes;
-                }
-                return 0;
-            } catch (error) {
-                console.error('获取点赞数失败:', error);
-                return null; // 返回 null 表示网络错误
-            }
-        }
-
-        // 更新远程点赞数
-        async function updateLikes(newCount) {
-            try {
-                const response = await fetch(`${LIKE_CONFIG.JSONBIN_API_URL}/${LIKE_CONFIG.JSONBIN_BIN_ID}`, {
-                    method: 'PUT',
-                    headers: LIKE_CONFIG.getHeaders(),
-                    body: JSON.stringify({ likes: newCount })
-                });
-                
-                if (!response.ok) {
-                    throw new Error('Failed to update likes');
-                }
-                
-                return true;
-            } catch (error) {
-                console.error('更新点赞数失败:', error);
-                return false;
-            }
-        }
-
-        // 点赞功能
-        async function addLike() {
-            // 检查是否正在加载
-            if (isLoading) return;
-            
-            // 检查本地是否已点赞
-            if (localStorage.getItem(LIKE_CONFIG.LIKED_KEY) === 'true') {
-                showToast(
-                    '您已经点过赞了，感谢您的鼓励！',
-                    "You've already liked this post, thank you for your encouragement!"
-                );
-                return;
-            }
-            
-            // 设置加载状态
-            isLoading = true;
-            const likeBtn = document.getElementById('likeBtn');
-            likeBtn.classList.add('loading');
-            
-            // 增加本地计数
-            currentLikes++;
-            document.getElementById('like-count').textContent = currentLikes;
-            
-            // 尝试更新远程
-            const updateSuccess = await updateLikes(currentLikes);
-            
-            if (updateSuccess) {
-                // 标记已点赞并记录时间
-                localStorage.setItem(LIKE_CONFIG.LIKED_KEY, 'true');
-                localStorage.setItem(LIKE_CONFIG.LIKED_AT_KEY, new Date().toISOString());
-                
-                // 更新按钮状态
-                likeBtn.classList.add('liked');
-                likeBtn.disabled = true;
-                
-                showToast(
-                    '感谢您的点赞！您的支持是我前进的动力！',
-                    'Thank you for your like! Your support drives me forward!'
-                );
-            } else {
-                // 如果远程更新失败，回退本地计数
-                currentLikes--;
-                document.getElementById('like-count').textContent = currentLikes;
-                showToast(
-                    '点赞失败，请检查网络连接后重试。',
-                    'Failed to like. Please check your network and try again.'
-                );
-            }
-            
-            // 取消加载状态
-            isLoading = false;
-            likeBtn.classList.remove('loading');
-        }
-
-        // 页面加载时初始化
-        window.onload = async function() {
-            const likeBtn = document.getElementById('likeBtn');
-            const likeCountEl = document.getElementById('like-count');
-            
-            // 显示加载状态
-            likeCountEl.textContent = '...';
-            
-            // 获取远程点赞数
-            const remoteLikes = await fetchLikes();
-            
-            if (remoteLikes !== null) {
-                currentLikes = remoteLikes;
-                likeCountEl.textContent = currentLikes;
-            } else {
-                // 网络错误时显示默认值
-                likeCountEl.textContent = '0';
-                currentLikes = 0;
-            }
-            
-            // 检查本地是否已点赞
-            if (localStorage.getItem(LIKE_CONFIG.LIKED_KEY) === 'true') {
-                likeBtn.classList.add('liked');
-                likeBtn.disabled = true;
-            }
-            
-            // 初始化 AOS
-            AOS.init({
-                duration: 600,
-                easing: 'ease-out',
-                once: true,
-                offset: 50
-            });
-        };
-        
-        // 点击后快速添加点赞效果（可选动画增强）
-        document.getElementById('likeBtn').addEventListener('mousedown', function() {
-            if (!this.classList.contains('liked')) {
-                this.style.transform = 'scale(0.95)';
-            }
-        });
-        
-        document.getElementById('likeBtn').addEventListener('mouseup', function() {
-            this.style.transform = '';
-        });
-        
-        document.getElementById('likeBtn').addEventListener('mouseleave', function() {
-            this.style.transform = '';
+        // 初始化 AOS
+        AOS.init({
+            duration: 600,
+            easing: 'ease-out',
+            once: true,
+            offset: 50
         });
 
         // ========== 打字机效果 ==========
