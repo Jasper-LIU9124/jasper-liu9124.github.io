@@ -1,0 +1,1590 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>刘家硕 | Jasper LIU</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        /* ========== CSS变量 - 极简主义增强 ========== */
+        :root {
+            --primary: #1A1A1A;
+            --accent: #0066FF;
+            --bg: #FFFFFF;
+            --bg-subtle: #F8F9FA;
+            --text: #1A1A1A;
+            --text-light: #666666;
+            --text-muted: #999999;
+            --divider: #EEEEEE;
+            --border: #E5E5E5;
+            --shadow: rgba(0, 0, 0, 0.04);
+            --shadow-hover: rgba(0, 0, 0, 0.08);
+            --transition: 0.2s ease;
+        }
+
+        /* ========== 基础重置 ========== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: var(--bg);
+            color: var(--text);
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.8;
+            overflow-x: hidden;
+        }
+
+        /* ========== 极简导航栏 ========== */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 1.2rem 2.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+        }
+
+        .nav-logo {
+            font-weight: 600;
+            font-size: 1.1rem;
+            color: var(--text);
+            text-decoration: none;
+            letter-spacing: -0.02em;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: color var(--transition);
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            padding: 5px;
+        }
+
+        .mobile-menu-btn span {
+            width: 25px;
+            height: 2px;
+            background: var(--text);
+            transition: all 0.3s ease;
+        }
+
+        /* ========== 震撼Hero区域 ========== */
+        .hero {
+            background: var(--bg);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 12vh 2rem 8vh;
+            text-align: center;
+            position: relative;
+        }
+
+        .hero-content {
+            max-width: 900px;
+        }
+
+        .hero-greeting {
+            font-size: 1rem;
+            color: var(--text-muted);
+            margin-bottom: 1.5rem;
+            font-weight: 400;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+        }
+
+        .hero-title {
+            font-size: clamp(3rem, 12vw, 10rem);
+            font-weight: 800;
+            line-height: 1;
+            margin-bottom: 1.5rem;
+            color: var(--text);
+            letter-spacing: -0.03em;
+        }
+
+        .hero-title .name {
+            display: block;
+            color: var(--text);
+        }
+
+        .wave-container {
+            display: inline-block;
+            overflow: hidden;
+            vertical-align: bottom;
+        }
+
+        .wave {
+            display: inline-block;
+            animation: wave 1.5s ease-in-out infinite;
+            transform-origin: 70% 70%;
+        }
+
+        .wave:nth-child(2) { animation-delay: 0.1s; }
+        .wave:nth-child(3) { animation-delay: 0.2s; }
+        .wave:nth-child(4) { animation-delay: 0.3s; }
+        .wave:nth-child(5) { animation-delay: 0.4s; }
+
+        @keyframes wave {
+            0%, 100% { transform: rotate(0deg); }
+            10% { transform: rotate(-10deg); }
+            20% { transform: rotate(12deg); }
+            30% { transform: rotate(-10deg); }
+            40% { transform: rotate(9deg); }
+            50% { transform: rotate(0deg); }
+            100% { transform: rotate(0deg); }
+        }
+
+        .hero-subtitle {
+            font-size: clamp(1.5rem, 3vw, 2.2rem);
+            color: var(--text-light);
+            margin-bottom: 2.5rem;
+            font-weight: 300;
+            letter-spacing: 0.1em;
+        }
+
+        /* 打字效果 */
+        .typing-text {
+            font-size: 1.2rem;
+            color: var(--text-light);
+            margin-bottom: 3rem;
+            height: 2rem;
+        }
+
+        .typing-text .cursor {
+            display: inline-block;
+            width: 2px;
+            height: 1.6rem;
+            background: var(--text);
+            animation: blink 1s infinite;
+            margin-left: 2px;
+            vertical-align: middle;
+        }
+
+        @keyframes blink {
+            0%, 50% { opacity: 1; }
+            51%, 100% { opacity: 0; }
+        }
+
+        .hero-tags {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 0.75rem;
+            margin-bottom: 3rem;
+        }
+
+        .hero-tag {
+            padding: 0.5rem 1.2rem;
+            background: var(--bg-subtle);
+            color: var(--text);
+            border: none;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 0.85rem 1.8rem;
+            border-radius: 8px;
+            font-size: 0.95rem;
+            font-weight: 500;
+            text-decoration: none;
+            transition: all var(--transition);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-primary {
+            background: var(--text);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #333333;
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--text);
+            border: 1px solid var(--divider);
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 3rem;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: bounce 2s infinite;
+        }
+
+        .scroll-indicator svg {
+            width: 24px;
+            height: 24px;
+            color: var(--text-muted);
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
+            40% { transform: translateX(-50%) translateY(-8px); }
+            60% { transform: translateX(-50%) translateY(-4px); }
+        }
+
+        /* ========== 通用容器 ========== */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        section {
+            padding: 8rem 0;
+            background: var(--bg);
+        }
+
+        section:nth-child(even) {
+            background: var(--bg-subtle);
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-tag {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            font-weight: 500;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            margin-bottom: 0.75rem;
+            display: block;
+        }
+
+        .section-title {
+            font-size: clamp(2rem, 4vw, 2.5rem);
+            font-weight: 700;
+            color: var(--text);
+            letter-spacing: -0.02em;
+        }
+
+        /* ========== 极简关于我 ========== */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5rem;
+            align-items: start;
+        }
+
+        .about-text {
+            font-size: 1.05rem;
+            color: var(--text-light);
+            line-height: 2;
+        }
+
+        .about-text p {
+            margin-bottom: 1.5rem;
+        }
+
+        .about-text p:last-child {
+            margin-bottom: 0;
+        }
+
+        .about-stats {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.25rem;
+        }
+
+        .stat-card {
+            background: var(--bg);
+            border-radius: 8px;
+            padding: 2rem;
+            text-align: center;
+            transition: all var(--transition);
+            box-shadow: 0 1px 3px var(--shadow);
+        }
+
+        .stat-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px var(--shadow-hover);
+        }
+
+        .stat-number {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: var(--text);
+        }
+
+        .stat-label {
+            font-size: 0.85rem;
+            color: var(--text-light);
+            margin-top: 0.5rem;
+        }
+
+        /* ========== 极简时间线 ========== */
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 2px;
+            height: 100%;
+            background: var(--divider);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 2.5rem;
+            padding-left: 2.5rem;
+        }
+
+        .timeline-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .timeline-content {
+            background: var(--bg);
+            border-radius: 8px;
+            padding: 2rem;
+            transition: all var(--transition);
+            box-shadow: 0 1px 3px var(--shadow);
+        }
+
+        .timeline-content:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px var(--shadow-hover);
+        }
+
+        .timeline-date {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+            letter-spacing: 0.05em;
+        }
+
+        .timeline-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 0.3rem;
+            color: var(--text);
+        }
+
+        .timeline-subtitle {
+            font-size: 0.95rem;
+            color: var(--text-light);
+            margin-bottom: 0.75rem;
+        }
+
+        .timeline-desc {
+            font-size: 0.95rem;
+            color: var(--text-light);
+            line-height: 1.8;
+        }
+
+        /* ========== 极简项目卡片 ========== */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .card {
+            background: var(--bg);
+            border-radius: 8px;
+            padding: 2rem;
+            transition: all var(--transition);
+            box-shadow: 0 1px 3px var(--shadow);
+        }
+
+        .card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px var(--shadow-hover);
+        }
+
+        .project-icon {
+            font-size: 1.75rem;
+            margin-bottom: 1rem;
+        }
+
+        .project-badge {
+            display: inline-block;
+            padding: 0.3rem 0.75rem;
+            background: var(--bg-subtle);
+            color: var(--text);
+            border-radius: 6px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            margin-bottom: 1rem;
+        }
+
+        .project-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+            color: var(--text);
+        }
+
+        .project-desc {
+            font-size: 0.95rem;
+            color: var(--text-light);
+            margin-bottom: 0.75rem;
+            line-height: 1.8;
+        }
+
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1.25rem;
+        }
+
+        .project-tag {
+            padding: 0.25rem 0.7rem;
+            background: var(--bg-subtle);
+            color: var(--text-light);
+            border-radius: 4px;
+            font-size: 0.8rem;
+        }
+
+        /* ========== 极简实习经历 ========== */
+        .experience-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .experience-card {
+            background: var(--bg);
+            border-radius: 8px;
+            padding: 2rem;
+            display: flex;
+            gap: 1.25rem;
+            transition: all var(--transition);
+            box-shadow: 0 1px 3px var(--shadow);
+        }
+
+        .experience-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px var(--shadow-hover);
+        }
+
+        .experience-icon {
+            font-size: 1.75rem;
+            flex-shrink: 0;
+        }
+
+        .experience-info h3 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+            color: var(--text);
+        }
+
+        .experience-company {
+            color: var(--text);
+            font-size: 0.95rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .experience-date {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-bottom: 0.75rem;
+        }
+
+        .experience-desc {
+            font-size: 0.95rem;
+            color: var(--text-light);
+            line-height: 1.8;
+        }
+
+        /* ========== 极简奖项 ========== */
+        .awards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.25rem;
+        }
+
+        .award-card {
+            background: var(--bg);
+            border-radius: 8px;
+            padding: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 1.25rem;
+            transition: all var(--transition);
+            box-shadow: 0 1px 3px var(--shadow);
+        }
+
+        .award-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px var(--shadow-hover);
+        }
+
+        .award-icon {
+            font-size: 1.5rem;
+            flex-shrink: 0;
+        }
+
+        .award-info h4 {
+            font-size: 0.95rem;
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+            color: var(--text);
+        }
+
+        .award-info span {
+            font-size: 0.85rem;
+            color: var(--text-light);
+        }
+
+        /* ========== 极简技能 ========== */
+        .skills-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1.25rem;
+        }
+
+        .skill-card {
+            background: var(--bg);
+            border-radius: 8px;
+            padding: 1.5rem 2rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all var(--transition);
+            box-shadow: 0 1px 3px var(--shadow);
+            min-width: 180px;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px var(--shadow-hover);
+        }
+
+        .skill-icon {
+            font-size: 1.5rem;
+        }
+
+        .skill-name {
+            font-weight: 600;
+            font-size: 1rem;
+            text-align: center;
+            color: var(--text);
+        }
+
+        .skill-desc {
+            font-size: 0.85rem;
+            color: var(--text-light);
+            text-align: center;
+        }
+
+        /* ========== 极简联系方式 ========== */
+        .contact-content {
+            max-width: 700px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .contact-intro {
+            font-size: 1.05rem;
+            color: var(--text-light);
+            margin-bottom: 3rem;
+            line-height: 1.9;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 1.25rem;
+            margin-bottom: 3rem;
+        }
+
+        .contact-card {
+            background: var(--bg);
+            border-radius: 8px;
+            padding: 1.75rem;
+            transition: all var(--transition);
+            text-decoration: none;
+            color: inherit;
+            display: block;
+            box-shadow: 0 1px 3px var(--shadow);
+        }
+
+        .contact-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px var(--shadow-hover);
+        }
+
+        .contact-card:hover .contact-value {
+            color: var(--accent);
+        }
+
+        .contact-icon {
+            font-size: 1.5rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .contact-label {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-bottom: 0.25rem;
+        }
+
+        .contact-value {
+            font-size: 0.95rem;
+            font-weight: 500;
+            color: var(--text);
+            transition: color var(--transition);
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+        }
+
+        .social-link {
+            width: 48px;
+            height: 48px;
+            background: var(--bg);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all var(--transition);
+            text-decoration: none;
+            color: var(--text);
+            box-shadow: 0 1px 3px var(--shadow);
+        }
+
+        .social-link:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px var(--shadow-hover);
+            color: var(--accent);
+        }
+
+        /* ========== 极简页脚 ========== */
+        footer {
+            padding: 2rem 2.5rem;
+            text-align: center;
+            background: var(--bg);
+        }
+
+        .footer-content {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .footer-text {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        .footer-text a {
+            color: var(--text);
+            text-decoration: none;
+            transition: color var(--transition);
+        }
+
+        .footer-text a:hover {
+            color: var(--accent);
+        }
+
+        /* ========== 点赞功能 ========== */
+        .like-section {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .stat-item {
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+
+        .stat-item svg {
+            width: 16px;
+            height: 16px;
+        }
+
+        .like-btn {
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.5rem 1rem;
+            background: var(--bg);
+            border: 1px solid var(--divider);
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all var(--transition);
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+
+        .like-btn:hover:not(:disabled) {
+            border-color: #FF6B6B;
+            color: #FF6B6B;
+            transform: translateY(-2px);
+        }
+
+        .like-btn.liked {
+            background: #FFF5F5;
+            border-color: #FF6B6B;
+            color: #E53E3E;
+        }
+
+        .like-btn:disabled {
+            cursor: not-allowed;
+        }
+
+        .like-btn svg {
+            width: 16px;
+            height: 16px;
+        }
+
+        /* ========== Toast 提示 ========== */
+        .toast {
+            position: fixed;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%) translateY(100px);
+            background: var(--text);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            font-size: 0.95rem;
+            z-index: 9999;
+            opacity: 0;
+            transition: all 0.3s ease;
+            text-align: center;
+            max-width: 90%;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .toast.show {
+            transform: translateX(-50%) translateY(0);
+            opacity: 1;
+        }
+
+        .toast .line1 {
+            display: block;
+        }
+
+        .toast .line2 {
+            display: block;
+            font-size: 0.85rem;
+            opacity: 0.8;
+            margin-top: 0.25rem;
+        }
+
+        /* ========== 加载状态 ========== */
+        .like-btn.loading {
+            opacity: 0.6;
+        }
+
+        /* ========== 响应式 ========== */
+        @media (max-width: 768px) {
+            nav {
+                padding: 1rem 1.5rem;
+            }
+
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: rgba(255, 255, 255, 0.98);
+                backdrop-filter: blur(10px);
+                flex-direction: column;
+                padding: 1rem;
+                gap: 1rem;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .mobile-menu-btn {
+                display: flex;
+            }
+
+            .hero {
+                padding: 10vh 1.5rem 6vh;
+                min-height: 90vh;
+            }
+
+            .hero-greeting {
+                font-size: 0.85rem;
+            }
+
+            .hero-tags {
+                gap: 0.5rem;
+            }
+
+            .hero-tag {
+                padding: 0.4rem 0.9rem;
+                font-size: 0.8rem;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+
+            .timeline::before {
+                left: 0;
+            }
+
+            .timeline-item {
+                padding-left: 1.5rem;
+            }
+
+            .footer-content {
+                flex-direction: column;
+                justify-content: center;
+            }
+
+            .projects-grid,
+            .experience-grid {
+                grid-template-columns: 1fr;
+            }
+
+            section {
+                padding: 5rem 0;
+            }
+
+            .section-header {
+                margin-bottom: 2.5rem;
+            }
+        }
+
+        /* ========== AOS动画优化 ========== */
+        [data-aos] {
+            pointer-events: auto !important;
+        }
+
+        /* ========== 数字滚动 ========== */
+        .counter {
+            display: inline-block;
+        }
+
+        /* ========== 链接hover效果 ========== */
+        a {
+            transition: color var(--transition);
+        }
+    </style>
+</head>
+<body>
+    <!-- 极简导航栏 -->
+    <nav>
+        <a href="#" class="nav-logo">Jasper</a>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="#about">关于我</a></li>
+            <li><a href="#education">教育</a></li>
+            <li><a href="#projects">项目</a></li>
+            <li><a href="#experience">经历</a></li>
+            <li><a href="#contact">联系</a></li>
+        </ul>
+        <div class="mobile-menu-btn" onclick="toggleMenu()">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </nav>
+
+    <!-- Hero 区域 -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <p class="hero-greeting">你好，欢迎来到我的主页</p>
+            <h1 class="hero-title">
+                <span class="wave-container"><span class="wave">我</span></span><span class="wave-container"><span class="wave">是</span></span>
+                <span class="name">刘家硕</span>
+            </h1>
+            <p class="hero-subtitle">Jasper LIU</p>
+            <div class="typing-text">
+                <span id="typed-text"></span><span class="cursor"></span>
+            </div>
+            <div class="hero-tags">
+                <span class="hero-tag">🎓 硕士研究生</span>
+                <span class="hero-tag">🤖 多模态大模型</span>
+                <span class="hero-tag">🦾 机器人 VLA</span>
+                <span class="hero-tag">👁️ 计算机视觉</span>
+            </div>
+            <div class="hero-buttons">
+                <a href="#about" class="btn btn-primary">了解更多 →</a>
+                <a href="https://github.com/Jasper-LIU9124" target="_blank" class="btn btn-secondary">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                    GitHub
+                </a>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M19 12l-7 7-7-7"/></svg>
+        </div>
+    </section>
+
+    <!-- 关于我 -->
+    <section class="about" id="about">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <span class="section-tag">About Me</span>
+                <h2 class="section-title">关于我</h2>
+            </div>
+            <div class="about-content">
+                <div class="about-text" data-aos="fade-right">
+                    <p>你好！我是刘家硕（Jasper），来自中国香港。2025年秋季入学香港大学（QS世界排名第11位），师从 Dr. Wilton Wai Tung FOK，开始我的硕士研究生生涯。</p>
+                    <p>我的研究方向聚焦于<strong>大模型、无人机自主巡航、数据集采集</strong>，致力于探索人工智能与无人机技术的交叉领域。</p>
+                    <p>在本科阶段，我在中国矿业大学（双一流、211高校）电子信息工程专业取得了<strong>GPA 4.05/5.00（前16%）</strong>的优异成绩，并积极参与各类科研项目与学科竞赛，获得多项国家级和省级荣誉。</p>
+                    <p>我热爱<strong>古文明历史与现代艺术</strong>，相信跨学科的思维碰撞能够带来创新灵感。期待与更多志同道合的朋友交流合作！</p>
+                </div>
+                <div class="about-stats" data-aos="fade-left">
+                    <div class="stat-card">
+                        <div class="stat-number"><span class="counter" data-target="4.05" data-decimals="2">0</span></div>
+                        <div class="stat-label">GPA（年级前16%）</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number"><span class="counter" data-target="5">0</span>+</div>
+                        <div class="stat-label">国家级/省级奖项</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number"><span class="counter" data-target="2">0</span></div>
+                        <div class="stat-label">软件著作权</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number"><span class="counter" data-target="2">0</span></div>
+                        <div class="stat-label">科研/实习经历</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 教育背景 -->
+    <section id="education">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <span class="section-tag">Education</span>
+                <h2 class="section-title">教育背景</h2>
+            </div>
+            <div class="timeline">
+                <div class="timeline-item" data-aos="fade-up">
+                    <div class="timeline-content">
+                        <span class="timeline-date">2025.09 - 至今</span>
+                        <h3 class="timeline-title">香港大学</h3>
+                        <p class="timeline-subtitle">The University of Hong Kong</p>
+                        <p class="timeline-desc">
+                            工学硕士 · 电机电子工程<br>
+                            研究方向：无人机自主巡航、大模型、数据集采集<br>
+                            指导老师：Dr. Wilton Wai Tung FOK<br>
+                            QS世界排名第11 | ARWU排名第67
+                        </p>
+                    </div>
+                </div>
+                <div class="timeline-item" data-aos="fade-up">
+                    <div class="timeline-content">
+                        <span class="timeline-date">2021.09 - 2025.06</span>
+                        <h3 class="timeline-title">中国矿业大学</h3>
+                        <p class="timeline-subtitle">China University of Mining and Technology</p>
+                        <p class="timeline-desc">
+                            工学学士 · 电子信息工程<br>
+                            GPA: 4.05/5.00（33/214）<br>
+                            主修课程：大数据技术(97)、传感技术(94)、数字图像处理(93)、数字信号处理(93)、无线传感网络(93)等<br>
+                            毕业设计：基于ZYNQ的双目视觉图像处理系统设计<br>
+                            软件著作权：2025SR0956633<br>
+                            双一流 · 211高校
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 项目经历 -->
+    <section id="projects">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <span class="section-tag">Projects</span>
+                <h2 class="section-title">项目经历</h2>
+            </div>
+            <div class="projects-grid">
+                <div class="card" data-aos="fade-up">
+                    <div class="project-icon">🔋</div>
+                    <span class="project-badge">🏅 国家级项目 · 第一负责人</span>
+                    <h3 class="project-title">基于Transformer与LSTM的锂动力电池在线状态估计</h3>
+                    <p class="project-desc">
+                        参与国家级科研项目，设计并实现基于深度学习的电池管理系统。运用Transformer架构捕捉时序依赖关系，结合LSTM网络进行特征提取，实现对电池SOC（State of Charge）和SOH（State of Health）的精准估计，估算误差均低于3%。
+                    </p>
+                    <p class="project-desc">
+                        <strong>成果：</strong>软件著作权（2025SR0940084）、IEEE论文《Joint estimation model of SOC-SOH for lithium-ion batteries integrating Transformer and BiLSTM》（第一作者）
+                    </p>
+                    <div class="project-tags">
+                        <span class="project-tag">Transformer</span>
+                        <span class="project-tag">LSTM</span>
+                        <span class="project-tag">深度学习</span>
+                        <span class="project-tag">BMS</span>
+                    </div>
+                </div>
+                <div class="card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="project-icon">🔐</div>
+                    <span class="project-badge">📗 校级项目 · 算法设计、软件开发</span>
+                    <h3 class="project-title">基于Lorenz混沌的视频加密算法</h3>
+                    <p class="project-desc">
+                        设计并实现基于Lorenz混沌系统的视频加密系统。通过混沌映射的伪随机性和初值敏感性，实现对视频数据的高安全性加密。完成算法设计、软件开发及性能测试。
+                    </p>
+                    <p class="project-desc">
+                        <strong>成果：</strong>软件著作权（2023SR0682874）
+                    </p>
+                    <div class="project-tags">
+                        <span class="project-tag">混沌理论</span>
+                        <span class="project-tag">密码学</span>
+                        <span class="project-tag">视频处理</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 实习经历 -->
+    <section id="experience">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <span class="section-tag">Experience</span>
+                <h2 class="section-title">实习经历</h2>
+            </div>
+            <div class="experience-grid">
+                <div class="experience-card" data-aos="fade-up">
+                    <div class="experience-icon">🏛️</div>
+                    <div class="experience-info">
+                        <h3>研究助理</h3>
+                        <p class="experience-company">香港大学 SPORT AI Lab</p>
+                        <p class="experience-date">2025.10 - 至今</p>
+                        <p class="experience-desc">负责人工智能模型的数据集设计、训练、微调以及部署工作。</p>
+                    </div>
+                </div>
+                <div class="experience-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="experience-icon">📱</div>
+                    <div class="experience-info">
+                        <h3>鸿蒙北向应用开发员</h3>
+                        <p class="experience-company">软通动力（无锡基地）</p>
+                        <p class="experience-date">2024.07 - 2024.08</p>
+                        <p class="experience-desc">进行鸿蒙北向应用开发，实现多架构布局的基本应用，综合框架布局并结合网络API接口读取数据库实时信息，利用JS语言实现鸿蒙系统下的园林养护移动端应用平台的研发设计。</p>
+                        <p class="experience-desc">
+                            <strong>成果：</strong>所设计的鸿蒙系统移动端程序，在学校劳动教育实践课程投入使用
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 奖项荣誉 -->
+    <section id="awards">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <span class="section-tag">Awards</span>
+                <h2 class="section-title">奖项荣誉</h2>
+            </div>
+            <div class="awards-grid">
+                <div class="award-card" data-aos="fade-up">
+                    <div class="award-icon">🏆</div>
+                    <div class="award-info">
+                        <h4>第十五届"中国电机工程学会杯"全国大学生电工数学建模竞赛</h4>
+                        <span>国家级二等奖（前20%）· 2023.07</span>
+                    </div>
+                </div>
+                <div class="award-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="award-icon">🥉</div>
+                    <div class="award-info">
+                        <h4>全国大学生数学建模竞赛（两届）</h4>
+                        <span>省级三等奖 · 2022/2023.10</span>
+                    </div>
+                </div>
+                <div class="award-card" data-aos="fade-up" data-aos-delay="150">
+                    <div class="award-icon">🥈</div>
+                    <div class="award-info">
+                        <h4>五一数学建模竞赛</h4>
+                        <span>省级二等奖 · 2023.06</span>
+                    </div>
+                </div>
+                <div class="award-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="award-icon">🏅</div>
+                    <div class="award-info">
+                        <h4>全国大学生电子商务"创新、创意及创业"挑战赛</h4>
+                        <span>校级二等奖 · 2024.05</span>
+                    </div>
+                </div>
+                <div class="award-card" data-aos="fade-up" data-aos-delay="250">
+                    <div class="award-icon">🏅</div>
+                    <div class="award-info">
+                        <h4>"挑战杯"全国大学生课外学术科技作品竞赛</h4>
+                        <span>校级铜奖（两项）· 2024.06</span>
+                    </div>
+                </div>
+                <div class="award-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="award-icon">🎓</div>
+                    <div class="award-info">
+                        <h4>校级一等、二等奖学金</h4>
+                        <span>全校前5%、前10% · 2021-2025</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 技能证书 -->
+    <section id="skills">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <span class="section-tag">Skills</span>
+                <h2 class="section-title">技能证书</h2>
+            </div>
+            <div class="skills-container" data-aos="fade-up">
+                <div class="skill-card">
+                    <div class="skill-icon">💻</div>
+                    <span class="skill-name">计算机三级</span>
+                    <span class="skill-desc">等级考试 · 嵌入式系统开发技术</span>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-icon">📱</div>
+                    <span class="skill-name">HarmonyOS</span>
+                    <span class="skill-desc">应用开发者高级认证</span>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-icon">🇬🇧</div>
+                    <span class="skill-name">CET-6 / 雅思6.0</span>
+                    <span class="skill-desc">英语水平</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 联系方式 -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <span class="section-tag">Contact</span>
+                <h2 class="section-title">联系方式</h2>
+            </div>
+            <div class="contact-content">
+                <p class="contact-intro" data-aos="fade-up">
+                    感谢您浏览我的个人主页！如果您对科研合作、学术交流或任何话题感兴趣，欢迎通过以下方式与我取得联系。
+                </p>
+                <div class="contact-grid" data-aos="fade-up">
+                    <a href="mailto:jasper.liu9124@gmail.com" class="contact-card">
+                        <div class="contact-icon">✉️</div>
+                        <p class="contact-label">邮箱</p>
+                        <p class="contact-value">jasper.liu9124@gmail.com</p>
+                    </a>
+                    <a class="contact-card">
+                        <div class="contact-icon">📍</div>
+                        <p class="contact-label">所在地</p>
+                        <p class="contact-value">中国香港</p>
+                    </a>
+                </div>
+                <div class="social-links" data-aos="fade-up">
+                    <a href="https://github.com/Jasper-LIU9124" target="_blank" class="social-link" title="GitHub">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Toast 提示容器 -->
+    <div class="toast" id="toast">
+        <span class="line1"></span>
+        <span class="line2"></span>
+    </div>
+
+    <!-- 页脚 -->
+    <footer>
+        <div class="footer-content">
+            <p class="footer-text">
+                © 2025 刘家硕 (Jasper LIU)
+            </p>
+            <div class="like-section">
+                <span class="stat-item">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/>
+                    </svg>
+                    <span id="busuanzi_value_site_pv">-</span> 次浏览
+                </span>
+                <button class="like-btn" id="likeBtn" onclick="addLike()">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                    </svg>
+                    <span id="like-count">-</span>
+                </button>
+            </div>
+        </div>
+    </footer>
+
+    <!-- 不蒜子统计 -->
+    <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+    <!-- AOS 动画库 -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+
+    <script>
+        // ========== 全局点赞功能（基于 JSONbin.io） ==========
+        
+        // ========== 配置区域 - 请根据您的 JSONbin.io 配置修改 ==========
+        const LIKE_CONFIG = {
+            // JSONbin.io API 配置
+            // 请访问 https://jsonbin.io 创建免费存储桶，获取以下信息
+            JSONBIN_API_KEY: '$2a$10$YOUR_API_KEY_HERE',  // 替换为您的 API Key
+            JSONBIN_BIN_ID: 'YOUR_BIN_ID_HERE',             // 替换为您的 Bin ID
+            JSONBIN_API_URL: 'https://api.jsonbin.io/v3/b',
+            
+            // 本地存储键名
+            LIKED_KEY: 'jasper-has-liked',
+            LIKED_AT_KEY: 'jasper-liked-at',
+            
+            // API 请求头
+            getHeaders() {
+                return {
+                    'Content-Type': 'application/json',
+                    'X-Master-Key': this.JSONBIN_API_KEY
+                };
+            }
+        };
+
+        // 全局变量
+        let currentLikes = 0;
+        let isLoading = false;
+
+        // 显示 Toast 提示
+        function showToast(messageZh, messageEn) {
+            const toast = document.getElementById('toast');
+            const line1 = toast.querySelector('.line1');
+            const line2 = toast.querySelector('.line2');
+            
+            line1.textContent = messageZh;
+            line2.textContent = messageEn;
+            
+            toast.classList.add('show');
+            
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 3000);
+        }
+
+        // 从远程获取点赞数
+        async function fetchLikes() {
+            try {
+                const response = await fetch(`${LIKE_CONFIG.JSONBIN_API_URL}/${LIKE_CONFIG.JSONBIN_BIN_ID}/latest`, {
+                    method: 'GET',
+                    headers: LIKE_CONFIG.getHeaders()
+                });
+                
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                
+                const data = await response.json();
+                
+                // JSONbin.io 返回格式: { record: { likes: number } }
+                if (data && data.record && typeof data.record.likes === 'number') {
+                    return data.record.likes;
+                }
+                return 0;
+            } catch (error) {
+                console.error('获取点赞数失败:', error);
+                return null; // 返回 null 表示网络错误
+            }
+        }
+
+        // 更新远程点赞数
+        async function updateLikes(newCount) {
+            try {
+                const response = await fetch(`${LIKE_CONFIG.JSONBIN_API_URL}/${LIKE_CONFIG.JSONBIN_BIN_ID}`, {
+                    method: 'PUT',
+                    headers: LIKE_CONFIG.getHeaders(),
+                    body: JSON.stringify({ likes: newCount })
+                });
+                
+                if (!response.ok) {
+                    throw new Error('Failed to update likes');
+                }
+                
+                return true;
+            } catch (error) {
+                console.error('更新点赞数失败:', error);
+                return false;
+            }
+        }
+
+        // 点赞功能
+        async function addLike() {
+            // 检查是否正在加载
+            if (isLoading) return;
+            
+            // 检查本地是否已点赞
+            if (localStorage.getItem(LIKE_CONFIG.LIKED_KEY) === 'true') {
+                showToast(
+                    '您已经点过赞了，感谢您的鼓励！',
+                    "You've already liked this post, thank you for your encouragement!"
+                );
+                return;
+            }
+            
+            // 设置加载状态
+            isLoading = true;
+            const likeBtn = document.getElementById('likeBtn');
+            likeBtn.classList.add('loading');
+            
+            // 增加本地计数
+            currentLikes++;
+            document.getElementById('like-count').textContent = currentLikes;
+            
+            // 尝试更新远程
+            const updateSuccess = await updateLikes(currentLikes);
+            
+            if (updateSuccess) {
+                // 标记已点赞并记录时间
+                localStorage.setItem(LIKE_CONFIG.LIKED_KEY, 'true');
+                localStorage.setItem(LIKE_CONFIG.LIKED_AT_KEY, new Date().toISOString());
+                
+                // 更新按钮状态
+                likeBtn.classList.add('liked');
+                likeBtn.disabled = true;
+                
+                showToast(
+                    '感谢您的点赞！您的支持是我前进的动力！',
+                    'Thank you for your like! Your support drives me forward!'
+                );
+            } else {
+                // 如果远程更新失败，回退本地计数
+                currentLikes--;
+                document.getElementById('like-count').textContent = currentLikes;
+                showToast(
+                    '点赞失败，请检查网络连接后重试。',
+                    'Failed to like. Please check your network and try again.'
+                );
+            }
+            
+            // 取消加载状态
+            isLoading = false;
+            likeBtn.classList.remove('loading');
+        }
+
+        // 页面加载时初始化
+        window.onload = async function() {
+            const likeBtn = document.getElementById('likeBtn');
+            const likeCountEl = document.getElementById('like-count');
+            
+            // 显示加载状态
+            likeCountEl.textContent = '...';
+            
+            // 获取远程点赞数
+            const remoteLikes = await fetchLikes();
+            
+            if (remoteLikes !== null) {
+                currentLikes = remoteLikes;
+                likeCountEl.textContent = currentLikes;
+            } else {
+                // 网络错误时显示默认值
+                likeCountEl.textContent = '0';
+                currentLikes = 0;
+            }
+            
+            // 检查本地是否已点赞
+            if (localStorage.getItem(LIKE_CONFIG.LIKED_KEY) === 'true') {
+                likeBtn.classList.add('liked');
+                likeBtn.disabled = true;
+            }
+            
+            // 初始化 AOS
+            AOS.init({
+                duration: 600,
+                easing: 'ease-out',
+                once: true,
+                offset: 50
+            });
+        };
+        
+        // 点击后快速添加点赞效果（可选动画增强）
+        document.getElementById('likeBtn').addEventListener('mousedown', function() {
+            if (!this.classList.contains('liked')) {
+                this.style.transform = 'scale(0.95)';
+            }
+        });
+        
+        document.getElementById('likeBtn').addEventListener('mouseup', function() {
+            this.style.transform = '';
+        });
+        
+        document.getElementById('likeBtn').addEventListener('mouseleave', function() {
+            this.style.transform = '';
+        });
+
+        // ========== 打字机效果 ==========
+        const phrases = [
+            '探索多模态大模型与具身智能的交叉领域',
+            'Exploring the intersection of multimodal large models and embodied intelligence',
+            '探索多模態大模型同具身智能嘅交叉領域',
+            '研究 BenchMark 搭建与机器学习应用',
+            'Research on Benchmark Construction and Machine Learning Applications',
+            '研究 BenchMark 搭建同機器學習應用',
+            '期待与志同道合的朋友交流合作',
+            'Looking forward to exchanging ideas and collaborating with like-minded friends',
+            '期待同志同道合嘅朋友交流合作'
+        ];
+        let phraseIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+        let typingDelay = 100;
+
+        function typeEffect() {
+            const typedText = document.getElementById('typed-text');
+            const currentPhrase = phrases[phraseIndex];
+
+            if (isDeleting) {
+                typedText.textContent = currentPhrase.substring(0, charIndex - 1);
+                charIndex--;
+                typingDelay = 50;
+            } else {
+                typedText.textContent = currentPhrase.substring(0, charIndex + 1);
+                charIndex++;
+                typingDelay = 100;
+            }
+
+            if (!isDeleting && charIndex === currentPhrase.length) {
+                isDeleting = true;
+                typingDelay = 2000;
+            } else if (isDeleting && charIndex === 0) {
+                isDeleting = false;
+                phraseIndex = (phraseIndex + 1) % phrases.length;
+                typingDelay = 500;
+            }
+
+            setTimeout(typeEffect, typingDelay);
+        }
+
+        typeEffect();
+
+        // ========== 移动端菜单 ==========
+        function toggleMenu() {
+            document.getElementById('navLinks').classList.toggle('active');
+        }
+
+        // ========== 平滑滚动 ==========
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+                // 关闭移动端菜单
+                document.getElementById('navLinks').classList.remove('active');
+            });
+        });
+
+        // ========== 数字滚动动画 ==========
+        const counters = document.querySelectorAll('.counter');
+        const observerOptions = {
+            threshold: 0.5
+        };
+
+        const counterObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const counter = entry.target;
+                    const target = parseFloat(counter.getAttribute('data-target'));
+                    const decimals = parseInt(counter.getAttribute('data-decimals')) || 0;
+                    const duration = 1500;
+                    const increment = target / (duration / 16);
+                    let current = 0;
+
+                    const updateCounter = () => {
+                        current += increment;
+                        if (current < target) {
+                            counter.textContent = current.toFixed(decimals);
+                            requestAnimationFrame(updateCounter);
+                        } else {
+                            counter.textContent = target.toFixed(decimals);
+                        }
+                    };
+
+                    updateCounter();
+                    counterObserver.unobserve(counter);
+                }
+            });
+        }, observerOptions);
+
+        counters.forEach(counter => {
+            counterObserver.observe(counter);
+        });
+    </script>
+</body>
+</html>
