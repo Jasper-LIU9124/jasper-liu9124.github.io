@@ -100,7 +100,7 @@
             transition: all 0.3s ease;
         }
 
-        /* ========== 震撼Hero区域 ========== */
+        /* ========== Hero区域 ========== */
         .hero {
             background: var(--bg);
             min-height: 100vh;
@@ -108,159 +108,132 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            padding: 12vh 2rem 8vh;
+            padding: 12vh 2rem 14vh;
             text-align: center;
             position: relative;
+            overflow: hidden;
         }
 
         .hero-content {
-            max-width: 900px;
+            max-width: 980px;
+            width: 100%;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-reveal {
+            position: relative;
+            width: min(960px, 92vw);
+            margin: 0 auto 2.25rem;
+            border-radius: 28px;
+            cursor: default;
+        }
+
+        .hero-reveal-layer {
+            border-radius: 28px;
+            padding: clamp(2.5rem, 6vw, 5.2rem) 1.2rem;
+        }
+
+        .hero-reveal-base {
+            background: #fff;
+            color: #111;
+        }
+
+        .hero-greeting,
+        .hero-reveal-alt .hero-greeting {
+            font-size: 1rem;
+            margin-bottom: 1.35rem;
+            font-weight: 500;
+            letter-spacing: 0.08em;
+            line-height: 1.7;
         }
 
         .hero-greeting {
-            font-size: 1rem;
             color: var(--text-muted);
-            margin-bottom: 1.5rem;
-            font-weight: 400;
-            letter-spacing: 0.15em;
-            text-transform: uppercase;
-            position: relative;
         }
 
-        /* 双语言切换 */
-        .hero-greeting .chinese,
-        .hero-greeting .english {
-            transition: opacity 0.4s ease, transform 0.4s ease;
-        }
-
-        .hero-greeting .english {
-            position: absolute;
-            left: 50%;
-            transform: translateX(-50%);
-            opacity: 0;
-            white-space: nowrap;
-        }
-
-        .hero:hover .hero-greeting .chinese {
-            opacity: 0;
-            transform: translateY(-10px);
-        }
-
-        .hero:hover .hero-greeting .english {
-            opacity: 1;
-            transform: translateX(-50%);
-        }
-
-        .hero-title {
-            font-size: clamp(3rem, 12vw, 10rem);
+        .hero-reveal-title {
+            font-size: clamp(3.2rem, 11vw, 8.6rem);
             font-weight: 800;
-            line-height: 1;
-            margin-bottom: 1.5rem;
-            color: var(--text);
-            letter-spacing: -0.03em;
+            line-height: 0.96;
+            letter-spacing: -0.055em;
+            margin: 0;
         }
 
-        /* 中文名和英文名切换 */
-        .hero-title .chinese-name,
-        .hero-title .english-name {
-            display: inline-block;
-            transition: opacity 0.4s ease, transform 0.4s ease;
+        .hero-reveal-title .line {
+            display: block;
         }
 
-        .hero-title .english-name {
+        .hero-reveal-alt {
             position: absolute;
-            left: 50%;
-            transform: translateX(-50%);
-            opacity: 0;
-            white-space: nowrap;
+            inset: 0;
+            background: #000;
+            color: #fff;
+            clip-path: circle(0px at 50% 50%);
+            -webkit-clip-path: circle(0px at 50% 50%);
+            pointer-events: none;
+            will-change: clip-path;
         }
 
-        .hero-title .prefix {
-            font-weight: 400;
-            font-size: 0.5em;
-            margin-right: 0.3em;
-            opacity: 0.6;
-        }
-
-        .hero-title .name {
-            display: inline;
-            color: var(--text);
-        }
-
-        .hero:hover .hero-title .chinese-name {
-            opacity: 0;
-            transform: translateY(-20px);
-        }
-
-        .hero:hover .hero-title .english-name {
-            opacity: 1;
-            transform: translateX(-50%);
-        }
-
-        /* Hero hover背景变化 */
-        .hero {
-            transition: background 0.4s ease;
-        }
-
-        .hero:hover {
-            background: #1A1A1A;
-        }
-
-        .hero:hover .hero-content {
-            color: #FFFFFF;
-        }
-
-        .hero:hover .hero-greeting {
-            color: rgba(255, 255, 255, 0.6);
-        }
-
-        .hero:hover .hero-title {
-            color: #FFFFFF;
-        }
-
-        .hero:hover .hero-title .name {
-            color: #FFFFFF;
-        }
-
-        .hero:hover .typing-text {
-            color: rgba(255, 255, 255, 0.8);
-        }
-
-        .hero:hover .hero-tag {
-            background: rgba(255, 255, 255, 0.1);
-            color: #FFFFFF;
-        }
-
-        .hero:hover .btn-primary {
-            background: #FFFFFF;
-            color: #1A1A1A;
-        }
-
-        .hero:hover .btn-secondary {
-            border-color: rgba(255, 255, 255, 0.3);
-            color: #FFFFFF;
-        }
-
-        .hero:hover .scroll-indicator svg {
-            color: rgba(255, 255, 255, 0.4);
-        }
-
-        /* 按钮内中英文切换 */
-        .btn-primary .chinese,
-        .btn-primary .english {
-            transition: opacity 0.3s ease;
-        }
-
-        .btn-primary .english {
+        /* ========== 椭圆光晕效果 + 残影拖尾 ========== */
+        .hero-glow {
             position: absolute;
+            pointer-events: none;
             opacity: 0;
+            will-change: transform, opacity;
         }
 
-        .hero:hover .btn-primary .chinese {
-            opacity: 0;
+        /* 主光晕 - 椭圆形 */
+        .hero-glow-main {
+            width: 280px;
+            height: 180px;
+            border-radius: 50%;
+            background: radial-gradient(ellipse at center, 
+                rgba(100, 180, 255, 0.25) 0%, 
+                rgba(60, 140, 255, 0.12) 30%,
+                rgba(30, 100, 255, 0.05) 55%, 
+                transparent 75%);
+            filter: blur(2px);
+            transition: opacity 0.15s ease;
         }
 
-        .hero:hover .btn-primary .english {
+        /* 残影拖尾 - 椭圆形，不同延迟 */
+        .hero-glow-trail-1 {
+            width: 220px;
+            height: 140px;
+            border-radius: 50%;
+            background: radial-gradient(ellipse at center, 
+                rgba(120, 160, 255, 0.18) 0%, 
+                rgba(80, 130, 255, 0.08) 40%,
+                transparent 70%);
+            filter: blur(4px);
+            transition: opacity 0.12s ease 0.02s;
+        }
+
+        .hero-glow-trail-2 {
+            width: 160px;
+            height: 100px;
+            border-radius: 50%;
+            background: radial-gradient(ellipse at center, 
+                rgba(140, 180, 255, 0.12) 0%, 
+                rgba(100, 150, 255, 0.05) 50%,
+                transparent 75%);
+            filter: blur(6px);
+            transition: opacity 0.1s ease 0.04s;
+        }
+
+        .hero-glow-trail-3 {
+            width: 100px;
+            height: 60px;
+            border-radius: 50%;
+            background: radial-gradient(ellipse at center, 
+                rgba(160, 200, 255, 0.08) 0%, 
+                transparent 60%);
+            filter: blur(8px);
+            transition: opacity 0.08s ease 0.06s;
+        }
+
+        .hero-reveal.active .hero-glow {
             opacity: 1;
         }
 
@@ -989,42 +962,40 @@
         </div>
     </nav>
 
-    <!-- Hero 区域 - MiMo风格hover效果 -->
+    <!-- Hero 区域 -->
     <section class="hero" id="home">
         <div class="hero-content">
-            <!-- 双语言问候 -->
-            <p class="hero-greeting">
-                <span class="chinese">你好，欢迎来到我的主页</span>
-                <span class="english">Hello, welcome to my homepage</span>
-            </p>
-            <!-- 双语言标题 -->
-            <h1 class="hero-title">
-                <span class="chinese-name">
-                    <span class="prefix">我是</span>
-                    <span class="name">刘家硕</span>
-                </span>
-                <span class="english-name">
-                    <span class="prefix">I am</span>
-                    <span class="name">Jasper LIU</span>
-                </span>
-            </h1>
-            <!-- 打字效果 -->
+            <div class="hero-reveal" id="heroReveal">
+                <div class="hero-reveal-layer hero-reveal-base">
+                    <p class="hero-greeting">你好，欢迎来到我的主页</p>
+                    <h1 class="hero-reveal-title">
+                        <span class="line">我是</span>
+                        <span class="line">刘家硕</span>
+                    </h1>
+                </div>
+                <div class="hero-reveal-layer hero-reveal-alt" id="heroRevealAlt" aria-hidden="true">
+                    <div class="hero-glow hero-glow-main" id="heroGlowMain"></div>
+                    <div class="hero-glow hero-glow-trail-1" id="heroGlowTrail1"></div>
+                    <div class="hero-glow hero-glow-trail-2" id="heroGlowTrail2"></div>
+                    <div class="hero-glow hero-glow-trail-3" id="heroGlowTrail3"></div>
+                    <p class="hero-greeting">Hello, welcome to my homepage</p>
+                    <h1 class="hero-reveal-title">
+                        <span class="line">I am</span>
+                        <span class="line">Jasper LIU</span>
+                    </h1>
+                </div>
+            </div>
             <div class="typing-text">
                 <span id="typed-text"></span><span class="cursor"></span>
             </div>
-            <!-- 标签 -->
             <div class="hero-tags">
                 <span class="hero-tag">🎓 硕士研究生</span>
                 <span class="hero-tag">🤖 多模态大模型</span>
                 <span class="hero-tag">🦾 机器人 VLA</span>
                 <span class="hero-tag">👁️ 计算机视觉</span>
             </div>
-            <!-- 按钮 -->
             <div class="hero-buttons">
-                <a href="#about" class="btn btn-primary">
-                    <span class="chinese">了解更多 →</span>
-                    <span class="english">Learn More →</span>
-                </a>
+                <a href="#about" class="btn btn-primary">了解更多 →</a>
                 <a href="https://github.com/Jasper-LIU9124" target="_blank" class="btn btn-secondary">
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
                     GitHub
@@ -1337,6 +1308,74 @@
             once: true,
             offset: 50
         });
+
+        // ========== Hero揭示效果 + 椭圆光晕残影拖尾 ==========
+        const heroReveal = document.getElementById('heroReveal');
+        const heroRevealAlt = document.getElementById('heroRevealAlt');
+        const heroGlowMain = document.getElementById('heroGlowMain');
+        const heroGlowTrail1 = document.getElementById('heroGlowTrail1');
+        const heroGlowTrail2 = document.getElementById('heroGlowTrail2');
+        const heroGlowTrail3 = document.getElementById('heroGlowTrail3');
+
+        // 光晕位置历史记录（用于残影拖尾）
+        let glowHistory = [];
+        const historyLength = 8;
+
+        if (heroReveal && heroRevealAlt) {
+            heroReveal.addEventListener('mouseenter', function(e) {
+                heroReveal.classList.add('active');
+            });
+
+            heroReveal.addEventListener('mousemove', function(e) {
+                const rect = heroReveal.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                
+                // 计算圆形揭示半径
+                const maxRadius = Math.hypot(rect.width, rect.height);
+                const radius = Math.min(maxRadius * 0.5, 400);
+                
+                // 更新clip-path
+                heroRevealAlt.style.clipPath = `circle(${radius}px at ${x}px ${y}px)`;
+                heroRevealAlt.style.webkitClipPath = `circle(${radius}px at ${x}px ${y}px)`;
+                
+                // 记录光晕位置历史
+                glowHistory.unshift({ x, y });
+                if (glowHistory.length > historyLength) {
+                    glowHistory.pop();
+                }
+                
+                // 主光晕 - 直接跟随
+                if (heroGlowMain) {
+                    heroGlowMain.style.transform = `translate(${x - 140}px, ${y - 90}px)`;
+                }
+                
+                // 残影1 - 延迟2帧
+                if (heroGlowTrail1 && glowHistory.length > 2) {
+                    const pos = glowHistory[2];
+                    heroGlowTrail1.style.transform = `translate(${pos.x - 110}px, ${pos.y - 70}px)`;
+                }
+                
+                // 残影2 - 延迟4帧
+                if (heroGlowTrail2 && glowHistory.length > 4) {
+                    const pos = glowHistory[4];
+                    heroGlowTrail2.style.transform = `translate(${pos.x - 80}px, ${pos.y - 50}px)`;
+                }
+                
+                // 残影3 - 延迟6帧
+                if (heroGlowTrail3 && glowHistory.length > 6) {
+                    const pos = glowHistory[6];
+                    heroGlowTrail3.style.transform = `translate(${pos.x - 50}px, ${pos.y - 30}px)`;
+                }
+            });
+
+            heroReveal.addEventListener('mouseleave', function(e) {
+                heroReveal.classList.remove('active');
+                heroRevealAlt.style.clipPath = 'circle(0px at 50% 50%)';
+                heroRevealAlt.style.webkitClipPath = 'circle(0px at 50% 50%)';
+                glowHistory = [];
+            });
+        }
 
         // ========== 打字机效果 ==========
         const phrases = [
