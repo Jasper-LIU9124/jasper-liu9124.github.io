@@ -724,7 +724,9 @@
         .social-links {
             display: flex;
             justify-content: center;
+            align-items: center;
             gap: 1rem;
+            flex-wrap: wrap;
         }
 
         .social-link {
@@ -938,7 +940,7 @@
                 </div>
                 <div class="hero-reveal-alt" id="heroRevealAlt" aria-hidden="true">
                     <canvas class="particle-canvas" id="particleCanvas"></canvas>
-                    <p class="hero-greeting">Hello, welcome to my homepage</p>
+                    <p class="hero-greeting">Hi, welcome to my homepage</p>
                     <h1 class="hero-reveal-title">
                         <span class="line">I am</span>
                         <span class="line">Jasper LIU</span>
@@ -976,10 +978,10 @@
             </div>
             <div class="about-content">
                 <div class="about-text" data-aos="fade-right">
-                    <p>你好！我是刘家硕（Jasper），来自中国香港。2025年秋季入学香港大学（QS世界排名第11位），师从 Dr. Wilton Wai Tung FOK，开始我的硕士研究生生涯。</p>
-                    <p>我的研究方向聚焦于<strong>大模型、无人机自主巡航、数据集采集</strong>，致力于探索人工智能与无人机技术的交叉领域。</p>
+                    <p>你好！我是刘家硕（Jasper），来自中国。2025年秋季入学香港大学，师从 Dr. Wilton Wai Tung FOK与Ms. Carol Yingxian CHEN，开始我的硕士研究生生涯。</p>
+                    <p>我的研究方向聚焦于<strong>多模态大模型、扩散生成模型</strong>，致力于探索人工智能与各学科的交叉领域。</p>
                     <p>在本科阶段，我在中国矿业大学（双一流、211高校）电子信息工程专业取得了<strong>GPA 4.05/5.00（前16%）</strong>的优异成绩，并积极参与各类科研项目与学科竞赛，获得多项国家级和省级荣誉。</p>
-                    <p>我热爱<strong>古文明历史与现代艺术</strong>，相信跨学科的思维碰撞能够带来创新灵感。期待与更多志同道合的朋友交流合作！</p>
+                    <p>我热衷于探索<strong>古文明历史、现代艺术以及生物医学技术</strong>领域知识，坚信跨学科领域的思维碰撞才是未来主流。期待与更多志同道合的朋友交流合作！</p>
                 </div>
                 <div class="about-stats" data-aos="fade-left">
                     <div class="stat-card">
@@ -991,11 +993,11 @@
                         <div class="stat-label">国家级/省级奖项</div>
                     </div>
                     <div class="stat-card">
-                        <div class="stat-number"><span class="counter" data-target="2">0</span></div>
-                        <div class="stat-label">软件著作权</div>
+                        <div class="stat-number"><span class="counter" data-target="3">0</span></div>
+                        <div class="stat-label">论文及软著</div>
                     </div>
                     <div class="stat-card">
-                        <div class="stat-number"><span class="counter" data-target="2">0</span></div>
+                        <div class="stat-number"><span class="counter" data-target="6">0</span></div>
                         <div class="stat-label">科研/实习经历</div>
                     </div>
                 </div>
@@ -1018,8 +1020,8 @@
                         <p class="timeline-subtitle">The University of Hong Kong</p>
                         <p class="timeline-desc">
                             工学硕士 · 电机电子工程<br>
-                            研究方向：无人机自主巡航、大模型、数据集采集<br>
-                            指导老师：Dr. Wilton Wai Tung FOK<br>
+                            研究方向：多模态大模型、深度学习、嵌入式技术<br>
+                            指导老师：Dr. Wilton Wai Tung FOK & Ms. Carol Yingxian CHEN<br>
                             QS世界排名第11 | ARWU排名第67
                         </p>
                     </div>
@@ -1032,7 +1034,7 @@
                         <p class="timeline-desc">
                             工学学士 · 电子信息工程<br>
                             GPA: 4.05/5.00（33/214）<br>
-                            主修课程：大数据技术(97)、传感技术(94)、数字图像处理(93)、数字信号处理(93)、无线传感网络(93)等<br>
+                            主修课程：大数据技术、传感技术、数字图像处理、数字信号处理、无线传感网络等<br>
                             毕业设计：基于ZYNQ的双目视觉图像处理系统设计<br>
                             软件著作权：2025SR0956633<br>
                             双一流 · 211高校
@@ -1056,7 +1058,7 @@
                     <span class="project-badge">🏅 国家级项目 · 第一负责人</span>
                     <h3 class="project-title">基于Transformer与LSTM的锂动力电池在线状态估计</h3>
                     <p class="project-desc">
-                        参与国家级科研项目，设计并实现基于深度学习的电池管理系统。运用Transformer架构捕捉时序依赖关系，结合LSTM网络进行特征提取，实现对电池SOC（State of Charge）和SOH（State of Health）的精准估计，估算误差均低于3%。
+                        参与国家级科研项目，设计并实现基于深度学习的电池管理系统。运用Transformer架构捕捉时序依赖关系，结合LSTM网络进行特征提取，实现对电池在线健康状态的准确估计。
                     </p>
                     <p class="project-desc">
                         <strong>成果：</strong>软件著作权（2025SR0940084）、IEEE论文《Joint estimation model of SOC-SOH for lithium-ion batteries integrating Transformer and BiLSTM》（第一作者）
@@ -1073,7 +1075,7 @@
                     <span class="project-badge">📗 校级项目 · 算法设计、软件开发</span>
                     <h3 class="project-title">基于Lorenz混沌的视频加密算法</h3>
                     <p class="project-desc">
-                        设计并实现基于Lorenz混沌系统的视频加密系统。通过混沌映射的伪随机性和初值敏感性，实现对视频数据的高安全性加密。完成算法设计、软件开发及性能测试。
+                        设计并实现基于Lorenz混沌系统的视频加密系统。通过混沌映射的伪随机性和初值敏感性，实现对视频数据的高安全性加密。
                     </p>
                     <p class="project-desc">
                         <strong>成果：</strong>软件著作权（2023SR0682874）
@@ -1111,7 +1113,7 @@
                         <h3>鸿蒙北向应用开发员</h3>
                         <p class="experience-company">软通动力（无锡基地）</p>
                         <p class="experience-date">2024.07 - 2024.08</p>
-                        <p class="experience-desc">进行鸿蒙北向应用开发，实现多架构布局的基本应用，综合框架布局并结合网络API接口读取数据库实时信息，利用JS语言实现鸿蒙系统下的园林养护移动端应用平台的研发设计。</p>
+                        <p class="experience-desc">进行鸿蒙北向应用开发，实现多架构布局的基本应用。</p>
                         <p class="experience-desc">
                             <strong>成果：</strong>所设计的鸿蒙系统移动端程序，在学校劳动教育实践课程投入使用
                         </p>
@@ -1151,14 +1153,14 @@
                     </div>
                 </div>
                 <div class="award-card" data-aos="fade-up" data-aos-delay="200">
-                    <div class="award-icon">🏅</div>
+                    <div class="award-icon">🥈</div>
                     <div class="award-info">
                         <h4>全国大学生电子商务"创新、创意及创业"挑战赛</h4>
                         <span>校级二等奖 · 2024.05</span>
                     </div>
                 </div>
                 <div class="award-card" data-aos="fade-up" data-aos-delay="250">
-                    <div class="award-icon">🏅</div>
+                    <div class="award-icon">🥉</div>
                     <div class="award-info">
                         <h4>"挑战杯"全国大学生课外学术科技作品竞赛</h4>
                         <span>校级铜奖（两项）· 2024.06</span>
@@ -1195,7 +1197,7 @@
                 </div>
                 <div class="skill-card">
                     <div class="skill-icon">🇬🇧</div>
-                    <span class="skill-name">CET-6 / 雅思6.0</span>
+                    <span class="skill-name">CET-6 / IELTS 6.0</span>
                     <span class="skill-desc">英语水平</span>
                 </div>
             </div>
@@ -1216,8 +1218,13 @@
                 <div class="contact-grid" data-aos="fade-up">
                     <a href="mailto:jasper.liu9124@gmail.com" class="contact-card">
                         <div class="contact-icon">✉️</div>
-                        <p class="contact-label">邮箱</p>
+                        <p class="contact-label">E-mail (For Academic)</p>
                         <p class="contact-value">jasper.liu9124@gmail.com</p>
+                    </a>
+                    <a href="mailto:jasper_liu7629@163.com" class="contact-card">
+                        <div class="contact-icon">✉️</div>
+                        <p class="contact-label">E-mail (For others)</p>
+                        <p class="contact-value">jasper_liu7629@163.com</p>
                     </a>
                     <a class="contact-card">
                         <div class="contact-icon">📍</div>
@@ -1226,8 +1233,16 @@
                     </a>
                 </div>
                 <div class="social-links" data-aos="fade-up">
-                    <a href="https://github.com/Jasper-LIU9124" target="_blank" class="social-link" title="GitHub">
-                        <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                    <a href="https://github.com/Jasper-LIU9124" target="_blank" rel="noopener noreferrer" class="social-link" title="GitHub">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                        </svg>
+                    </a>
+                
+                    <a href="https://www.linkedin.com/in/jiashuo-liu-b5a217382/?locale=zh" target="_blank" rel="noopener noreferrer" class="social-link" title="LinkedIn">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M4.98 3.5C4.98 4.88 3.86 6 2.48 6S0 4.88 0 3.5 1.12 1 2.48 1s2.5 1.12 2.5 2.5zM0 8h5v16H0V8zm7.5 0h4.79v2.19h.07c.67-1.27 2.31-2.61 4.76-2.61C22.42 7.58 24 10.1 24 14.02V24h-5v-8.46c0-2.02-.04-4.62-2.81-4.62-2.82 0-3.25 2.2-3.25 4.48V24h-5V8z"/>
+                        </svg>
                     </a>
                 </div>
             </div>
@@ -1244,7 +1259,7 @@
     <footer>
         <div class="footer-content">
             <p class="footer-text">
-                © 2025 刘家硕 (Jasper LIU)
+                © 2026 LIU Jiashuo (Jasper LIU)
             </p>
             <p class="footer-visitor" style="font-size: 0.7rem; color: var(--text-muted); margin-top: 0.5rem;">
                 <span id="busuanzi_container_site_uv">访客数 <span id="busuanzi_value_site_uv"></span></span>
@@ -1269,7 +1284,7 @@
             offset: 50
         });
 
-        // ========== Hero揭示效果 - MiMo风格轨迹点系统 ==========
+        // ========== 揭示效果 ==========
         const heroReveal = document.getElementById('heroReveal');
         const heroRevealAlt = document.getElementById('heroRevealAlt');
 
@@ -1285,7 +1300,7 @@
             
             particleCtx = particleCanvas.getContext('2d');
             
-            // 设置canvas尺寸
+            // 设置了canvas尺寸
             function resizeCanvas() {
                 const rect = heroRevealAlt.getBoundingClientRect();
                 particleCanvas.width = rect.width;
@@ -1294,17 +1309,18 @@
             resizeCanvas();
             window.addEventListener('resize', resizeCanvas);
 
-            // 创建光粒子 - 增加到80个，更亮
-            const particleCount = 80;
+            // 创建光粒子 - 增到120个粒子，更亮，更加灵动
+            const particleCount = 120;
             for (let i = 0; i < particleCount; i++) {
                 particles.push({
                     x: Math.random() * particleCanvas.width,
                     y: Math.random() * particleCanvas.height,
-                    radius: Math.random() * 2 + 1,
-                    vx: (Math.random() - 0.5) * 0.3,
-                    vy: (Math.random() - 0.5) * 0.3,
-                    alpha: Math.random() * 0.4 + 0.5,
-                    pulse: Math.random() * Math.PI * 2
+                    radius: Math.random() * 2.2 + 0.6,
+                    vx: (Math.random() - 0.5) * 0.6,
+                    vy: (Math.random() - 0.5) * 0.6,
+                    alpha: Math.random() * 0.35 + 0.25,
+                    pulse: Math.random() * Math.PI * 2,
+                    pulseSpeed: Math.random() * 0.03 + 0.01
                 });
             }
         }
@@ -1489,9 +1505,11 @@
             '探索多模态大模型与具身智能的交叉领域',
             'Exploring the intersection of multimodal large models and embodied intelligence',
             '探索多模態大模型同具身智能嘅交叉領域',
+            
             '研究 BenchMark 搭建与机器学习应用',
             'Research on Benchmark Construction and Machine Learning Applications',
             '研究 BenchMark 搭建同機器學習應用',
+            
             '期待与志同道合的朋友交流合作',
             'Looking forward to exchanging ideas and collaborating with like-minded friends',
             '期待同志同道合嘅朋友交流合作'
