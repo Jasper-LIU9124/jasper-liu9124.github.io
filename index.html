@@ -183,54 +183,36 @@
             will-change: transform, opacity;
         }
 
-        /* 主光晕 - 椭圆形 */
+        /* 主光晕 - 根据速度动态变形 */
         .hero-glow-main {
-            width: 280px;
-            height: 180px;
+            width: 320px;
+            height: 320px;
             border-radius: 50%;
-            background: radial-gradient(ellipse at center, 
-                rgba(100, 180, 255, 0.25) 0%, 
-                rgba(60, 140, 255, 0.12) 30%,
-                rgba(30, 100, 255, 0.05) 55%, 
-                transparent 75%);
-            filter: blur(2px);
-            transition: opacity 0.15s ease;
+            background: radial-gradient(circle, rgba(255,255,255,0.18) 0%, rgba(255,255,255,0.08) 28%, rgba(255,255,255,0.02) 52%, rgba(255,255,255,0) 72%);
+            mix-blend-mode: screen;
+            transform: translate(-50%, -50%);
+            transition: opacity 0.18s ease;
         }
 
-        /* 残影拖尾 - 椭圆形，不同延迟 */
-        .hero-glow-trail-1 {
-            width: 220px;
-            height: 140px;
+        /* 残影拖尾 */
+        .hero-glow-trail {
+            width: 260px;
+            height: 260px;
             border-radius: 50%;
-            background: radial-gradient(ellipse at center, 
-                rgba(120, 160, 255, 0.18) 0%, 
-                rgba(80, 130, 255, 0.08) 40%,
-                transparent 70%);
-            filter: blur(4px);
-            transition: opacity 0.12s ease 0.02s;
+            background: radial-gradient(circle, rgba(255,255,255,0.12) 0%, rgba(255,255,255,0.05) 35%, transparent 70%);
+            mix-blend-mode: screen;
+            transform: translate(-50%, -50%);
+            transition: opacity 0.12s ease;
         }
 
         .hero-glow-trail-2 {
-            width: 160px;
-            height: 100px;
+            width: 200px;
+            height: 200px;
             border-radius: 50%;
-            background: radial-gradient(ellipse at center, 
-                rgba(140, 180, 255, 0.12) 0%, 
-                rgba(100, 150, 255, 0.05) 50%,
-                transparent 75%);
-            filter: blur(6px);
-            transition: opacity 0.1s ease 0.04s;
-        }
-
-        .hero-glow-trail-3 {
-            width: 100px;
-            height: 60px;
-            border-radius: 50%;
-            background: radial-gradient(ellipse at center, 
-                rgba(160, 200, 255, 0.08) 0%, 
-                transparent 60%);
-            filter: blur(8px);
-            transition: opacity 0.08s ease 0.06s;
+            background: radial-gradient(circle, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0.03) 40%, transparent 65%);
+            mix-blend-mode: screen;
+            transform: translate(-50%, -50%);
+            transition: opacity 0.1s ease;
         }
 
         .hero-reveal.active .hero-glow {
@@ -975,9 +957,8 @@
                 </div>
                 <div class="hero-reveal-layer hero-reveal-alt" id="heroRevealAlt" aria-hidden="true">
                     <div class="hero-glow hero-glow-main" id="heroGlowMain"></div>
-                    <div class="hero-glow hero-glow-trail-1" id="heroGlowTrail1"></div>
+                    <div class="hero-glow hero-glow-trail" id="heroGlowTrail1"></div>
                     <div class="hero-glow hero-glow-trail-2" id="heroGlowTrail2"></div>
-                    <div class="hero-glow hero-glow-trail-3" id="heroGlowTrail3"></div>
                     <p class="hero-greeting">Hello, welcome to my homepage</p>
                     <h1 class="hero-reveal-title">
                         <span class="line">I am</span>
@@ -1309,64 +1290,94 @@
             offset: 50
         });
 
-        // ========== Hero揭示效果 + 椭圆光晕残影拖尾 ==========
+        // ========== Hero揭示效果 + 速度响应椭圆光晕残影拖尾 ==========
         const heroReveal = document.getElementById('heroReveal');
         const heroRevealAlt = document.getElementById('heroRevealAlt');
         const heroGlowMain = document.getElementById('heroGlowMain');
         const heroGlowTrail1 = document.getElementById('heroGlowTrail1');
         const heroGlowTrail2 = document.getElementById('heroGlowTrail2');
-        const heroGlowTrail3 = document.getElementById('heroGlowTrail3');
 
-        // 光晕位置历史记录（用于残影拖尾）
+        // 光晕位置历史记录
         let glowHistory = [];
-        const historyLength = 8;
+        let lastX = 0, lastY = 0, lastTime = 0;
 
         if (heroReveal && heroRevealAlt) {
             heroReveal.addEventListener('mouseenter', function(e) {
                 heroReveal.classList.add('active');
+                const rect = heroReveal.getBoundingClientRect();
+                lastX = e.clientX - rect.left;
+                lastY = e.clientY - rect.top;
+                lastTime = Date.now();
             });
 
             heroReveal.addEventListener('mousemove', function(e) {
                 const rect = heroReveal.getBoundingClientRect();
                 const x = e.clientX - rect.left;
                 const y = e.clientY - rect.top;
+                const now = Date.now();
                 
-                // 计算圆形揭示半径
-                const maxRadius = Math.hypot(rect.width, rect.height);
-                const radius = Math.min(maxRadius * 0.5, 400);
+                // 计算速度
+                const dt = Math.max(now - lastTime, 1);
+                const dx = x - lastX;
+                const dy = y - lastY;
+                const speed = Math.sqrt(dx * dx + dy * dy) / dt * 10;
                 
-                // 更新clip-path
+                // 计算移动方向角度
+                const angle = Math.atan2(dy, dx);
+                
+                // 根据速度计算椭圆变形 (速度越快，椭圆越长)
+                const baseSize = 320;
+                const stretchFactor = Math.min(speed * 0.15, 0.6); // 最大拉伸60%
+                const width = baseSize * (1 + stretchFactor);
+                const height = baseSize * (1 - stretchFactor * 0.3);
+                
+                // 计算旋转角度（转换为度）
+                const rotateDeg = angle * 180 / Math.PI;
+                
+                // 更新clip-path - 固定半径
+                const radius = 150;
                 heroRevealAlt.style.clipPath = `circle(${radius}px at ${x}px ${y}px)`;
                 heroRevealAlt.style.webkitClipPath = `circle(${radius}px at ${x}px ${y}px)`;
                 
-                // 记录光晕位置历史
-                glowHistory.unshift({ x, y });
-                if (glowHistory.length > historyLength) {
+                // 主光晕 - 椭圆变形 + 旋转
+                if (heroGlowMain) {
+                    heroGlowMain.style.left = `${x}px`;
+                    heroGlowMain.style.top = `${y}px`;
+                    heroGlowMain.style.width = `${width}px`;
+                    heroGlowMain.style.height = `${height}px`;
+                    heroGlowMain.style.transform = `translate(-50%, -50%) rotate(${rotateDeg}deg)`;
+                }
+                
+                // 记录位置历史（用于残影）
+                glowHistory.unshift({ x, y, width, height, angle });
+                if (glowHistory.length > 10) {
                     glowHistory.pop();
                 }
                 
-                // 主光晕 - 直接跟随
-                if (heroGlowMain) {
-                    heroGlowMain.style.transform = `translate(${x - 140}px, ${y - 90}px)`;
+                // 残影1 - 延迟3帧
+                if (heroGlowTrail1 && glowHistory.length > 3) {
+                    const pos = glowHistory[3];
+                    heroGlowTrail1.style.left = `${pos.x}px`;
+                    heroGlowTrail1.style.top = `${pos.y}px`;
+                    heroGlowTrail1.style.width = `${pos.width * 0.8}px`;
+                    heroGlowTrail1.style.height = `${pos.height * 0.8}px`;
+                    heroGlowTrail1.style.transform = `translate(-50%, -50%) rotate(${pos.angle * 180 / Math.PI}deg)`;
                 }
                 
-                // 残影1 - 延迟2帧
-                if (heroGlowTrail1 && glowHistory.length > 2) {
-                    const pos = glowHistory[2];
-                    heroGlowTrail1.style.transform = `translate(${pos.x - 110}px, ${pos.y - 70}px)`;
-                }
-                
-                // 残影2 - 延迟4帧
-                if (heroGlowTrail2 && glowHistory.length > 4) {
-                    const pos = glowHistory[4];
-                    heroGlowTrail2.style.transform = `translate(${pos.x - 80}px, ${pos.y - 50}px)`;
-                }
-                
-                // 残影3 - 延迟6帧
-                if (heroGlowTrail3 && glowHistory.length > 6) {
+                // 残影2 - 延迟6帧
+                if (heroGlowTrail2 && glowHistory.length > 6) {
                     const pos = glowHistory[6];
-                    heroGlowTrail3.style.transform = `translate(${pos.x - 50}px, ${pos.y - 30}px)`;
+                    heroGlowTrail2.style.left = `${pos.x}px`;
+                    heroGlowTrail2.style.top = `${pos.y}px`;
+                    heroGlowTrail2.style.width = `${pos.width * 0.6}px`;
+                    heroGlowTrail2.style.height = `${pos.height * 0.6}px`;
+                    heroGlowTrail2.style.transform = `translate(-50%, -50%) rotate(${pos.angle * 180 / Math.PI}deg)`;
                 }
+                
+                // 更新上一帧数据
+                lastX = x;
+                lastY = y;
+                lastTime = now;
             });
 
             heroReveal.addEventListener('mouseleave', function(e) {
@@ -1374,6 +1385,13 @@
                 heroRevealAlt.style.clipPath = 'circle(0px at 50% 50%)';
                 heroRevealAlt.style.webkitClipPath = 'circle(0px at 50% 50%)';
                 glowHistory = [];
+                
+                // 重置光晕样式
+                if (heroGlowMain) {
+                    heroGlowMain.style.width = '320px';
+                    heroGlowMain.style.height = '320px';
+                    heroGlowMain.style.transform = 'translate(-50%, -50%)';
+                }
             });
         }
 
