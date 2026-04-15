@@ -246,6 +246,7 @@
             font-weight: 500;
             letter-spacing: 0.12em;
             line-height: 1.6;
+            white-space: nowrap;
         }
 
         .hero-greeting {
@@ -259,8 +260,8 @@
         .hero-reveal-title {
             font-size: clamp(2.6rem, 8.5vw, 6rem);
             font-weight: 700;
-            line-height: 1.15;
-            letter-spacing: -0.01em;
+            line-height: 1.2;
+            letter-spacing: 0.02em;
             margin: 0;
             color: #111;
             transition: color var(--transition);
@@ -272,6 +273,16 @@
 
         .hero-reveal-title .line {
             display: block;
+        }
+
+        /* 基础层名字样式 */
+        .hero-reveal-base .hero-reveal-title .line:last-child {
+            letter-spacing: 0.08em;
+        }
+
+        /* 悬停层名字样式 */
+        .hero-reveal-alt .hero-reveal-title .line:last-child {
+            letter-spacing: 0.12em;
         }
 
         /* 上层（英文）- 通过clip-path显示 */
@@ -1182,7 +1193,7 @@
         <div class="hero-content">
             <div class="hero-reveal" id="heroReveal">
                 <div class="hero-reveal-base">
-                    <p class="hero-greeting">你好，欢迎来到我的主页</p>
+                    <p class="hero-greeting">你好，欢迎</p>
                     <h1 class="hero-reveal-title">
                         <span class="line">我是</span>
                         <span class="line">刘家硕</span>
@@ -1190,7 +1201,7 @@
                 </div>
                 <div class="hero-reveal-alt" id="heroRevealAlt" aria-hidden="true">
                     <canvas class="particle-canvas" id="particleCanvas"></canvas>
-                    <p class="hero-greeting">Hello, welcome to my homepage</p>
+                    <p class="hero-greeting">Hello, welcome</p>
                     <h1 class="hero-reveal-title">
                         <span class="line">I am</span>
                         <span class="line">Jasper LIU</span>
@@ -2179,87 +2190,59 @@
             const isDarkMode = document.documentElement.getAttribute('data-theme') === 'dark';
             
             if (lang === 'en') {
-                // 英文模式：英文基础层（大字），中文悬停层（小字）
+                // 英文模式：英文基础层，中文悬停层
                 heroBase.innerHTML = `
-                    <p class="hero-greeting">Hello, welcome to my homepage</p>
+                    <p class="hero-greeting">Hello, welcome</p>
                     <h1 class="hero-reveal-title">
                         <span class="line">I am</span>
-                        <span class="line" style="letter-spacing: 0.08em;">Jasper LIU</span>
+                        <span class="line">Jasper LIU</span>
                     </h1>
                 `;
                 heroAlt.innerHTML = `
                     <canvas class="particle-canvas" id="particleCanvas"></canvas>
-                    <p class="hero-greeting">你好，欢迎来到我的主页</p>
+                    <p class="hero-greeting">你好，欢迎</p>
                     <h1 class="hero-reveal-title">
                         <span class="line">我是</span>
-                        <span class="line" style="letter-spacing: 0.18em;">刘家硕</span>
+                        <span class="line">刘家硕</span>
                     </h1>
                 `;
                 const baseTitle = heroBase.querySelector('.hero-reveal-title');
-                const baseGreeting = heroBase.querySelector('.hero-greeting');
                 if (baseTitle) {
                     baseTitle.style.fontWeight = '700';
-                    baseTitle.style.letterSpacing = '0.02em';
-                    baseTitle.style.lineHeight = '1.25';
-                }
-                if (baseGreeting) {
-                    baseGreeting.style.color = isDarkMode ? 'rgba(255, 255, 255, 0.4)' : 'rgba(0, 0, 0, 0.3)';
-                    baseGreeting.style.letterSpacing = '0.15em';
-                    baseGreeting.style.marginBottom = '1rem';
+                    baseTitle.style.lineHeight = '1.2';
                 }
                 const altTitle = heroAlt.querySelector('.hero-reveal-title');
-                const altGreeting = heroAlt.querySelector('.hero-greeting');
                 if (altTitle) {
                     altTitle.style.fontWeight = '500';
-                    altTitle.style.letterSpacing = '0.18em';
-                    altTitle.style.lineHeight = '1.3';
-                }
-                if (altGreeting) {
-                    altGreeting.style.color = isDarkMode ? 'rgba(0, 0, 0, 0.4)' : 'rgba(255, 255, 255, 0.55)';
-                    altGreeting.style.letterSpacing = '0.2em';
-                    altGreeting.style.marginBottom = '1rem';
+                    altTitle.style.lineHeight = '1.2';
                 }
                 heroAlt.style.background = isDarkMode ? '#F5F5F5' : '#111';
             } else {
-                // 中文模式：中文基础层（大字），英文悬停层（小字）
+                // 中文模式：中文基础层，英文悬停层
                 heroBase.innerHTML = `
-                    <p class="hero-greeting">你好，欢迎来到我的主页</p>
+                    <p class="hero-greeting">你好，欢迎</p>
                     <h1 class="hero-reveal-title">
                         <span class="line">我是</span>
-                        <span class="line" style="letter-spacing: 0.15em;">刘家硕</span>
+                        <span class="line">刘家硕</span>
                     </h1>
                 `;
                 heroAlt.innerHTML = `
                     <canvas class="particle-canvas" id="particleCanvas"></canvas>
-                    <p class="hero-greeting">Hello, welcome to my homepage</p>
+                    <p class="hero-greeting">Hello, welcome</p>
                     <h1 class="hero-reveal-title">
                         <span class="line">I am</span>
-                        <span class="line" style="letter-spacing: 0.06em;">Jasper LIU</span>
+                        <span class="line">Jasper LIU</span>
                     </h1>
                 `;
                 const baseTitle = heroBase.querySelector('.hero-reveal-title');
-                const baseGreeting = heroBase.querySelector('.hero-greeting');
                 if (baseTitle) {
                     baseTitle.style.fontWeight = '700';
-                    baseTitle.style.letterSpacing = '0.12em';
-                    baseTitle.style.lineHeight = '1.25';
-                }
-                if (baseGreeting) {
-                    baseGreeting.style.color = isDarkMode ? 'rgba(255, 255, 255, 0.4)' : 'rgba(0, 0, 0, 0.3)';
-                    baseGreeting.style.letterSpacing = '0.15em';
-                    baseGreeting.style.marginBottom = '1rem';
+                    baseTitle.style.lineHeight = '1.2';
                 }
                 const altTitle = heroAlt.querySelector('.hero-reveal-title');
-                const altGreeting = heroAlt.querySelector('.hero-greeting');
                 if (altTitle) {
                     altTitle.style.fontWeight = '500';
-                    altTitle.style.letterSpacing = '0.02em';
-                    altTitle.style.lineHeight = '1.3';
-                }
-                if (altGreeting) {
-                    altGreeting.style.color = isDarkMode ? 'rgba(0, 0, 0, 0.4)' : 'rgba(255, 255, 255, 0.55)';
-                    altGreeting.style.letterSpacing = '0.15em';
-                    altGreeting.style.marginBottom = '1rem';
+                    altTitle.style.lineHeight = '1.2';
                 }
                 heroAlt.style.background = isDarkMode ? '#F5F5F5' : '#111';
             }
