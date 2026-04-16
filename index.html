@@ -258,7 +258,7 @@
         }
 
         .hero-reveal-title {
-            font-size: clamp(2.6rem, 8.5vw, 6rem);
+            font-size: clamp(2rem, 7vw, 6rem);
             font-weight: 700;
             line-height: 1.2;
             letter-spacing: 0.02em;
@@ -275,14 +275,19 @@
             display: block;
         }
 
+        /* 名字不换行 */
+        .hero-reveal-title .line:last-child {
+            white-space: nowrap;
+        }
+
         /* 基础层名字样式 */
         .hero-reveal-base .hero-reveal-title .line:last-child {
-            letter-spacing: 0.08em;
+            letter-spacing: 0.06em;
         }
 
         /* 悬停层名字样式 */
         .hero-reveal-alt .hero-reveal-title .line:last-child {
-            letter-spacing: 0.12em;
+            letter-spacing: 0.08em;
         }
 
         /* 上层（英文）- 通过clip-path显示 */
@@ -1126,6 +1131,14 @@
                 width: calc(100% - 2rem);
                 margin-left: auto;
                 margin-right: auto;
+            }
+
+            .hero-reveal-title {
+                font-size: clamp(1.8rem, 6.5vw, 4rem);
+            }
+
+            .hero-reveal-title .line:last-child {
+                letter-spacing: 0.04em;
             }
         }
 
