@@ -1036,7 +1036,16 @@
             }
 
             .mobile-menu-btn {
-                display: flex;
+                display: flex !important;
+                position: absolute;
+                right: 0.5rem;
+                top: 50%;
+                transform: translateY(-50%);
+                z-index: 10;
+            }
+
+            .nav-controls {
+                right: 3.5rem;
             }
 
             .hero {
@@ -1110,13 +1119,6 @@
 
             .section-header {
                 margin-bottom: 2.5rem;
-            }
-
-            .nav-controls {
-                position: absolute;
-                right: 1rem;
-                top: 50%;
-                transform: translateY(-50%);
             }
 
             nav {
