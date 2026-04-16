@@ -241,11 +241,11 @@
 
         .hero-greeting,
         .hero-reveal-alt .hero-greeting {
-            font-size: 0.88rem;
+            font-size: 0.75rem;
             margin-bottom: 1rem;
             font-weight: 500;
-            letter-spacing: 0.12em;
-            line-height: 1.6;
+            letter-spacing: 0.08em;
+            line-height: 1.5;
             white-space: nowrap;
         }
 
@@ -1193,7 +1193,7 @@
         <div class="hero-content">
             <div class="hero-reveal" id="heroReveal">
                 <div class="hero-reveal-base">
-                    <p class="hero-greeting">你好，欢迎</p>
+                    <p class="hero-greeting">你好，欢迎来到我的主页</p>
                     <h1 class="hero-reveal-title">
                         <span class="line">我是</span>
                         <span class="line">刘家硕</span>
@@ -1201,7 +1201,7 @@
                 </div>
                 <div class="hero-reveal-alt" id="heroRevealAlt" aria-hidden="true">
                     <canvas class="particle-canvas" id="particleCanvas"></canvas>
-                    <p class="hero-greeting">Hello, welcome</p>
+                    <p class="hero-greeting">Hello, welcome to my homepage</p>
                     <h1 class="hero-reveal-title">
                         <span class="line">I am</span>
                         <span class="line">Jasper LIU</span>
@@ -2192,7 +2192,7 @@
             if (lang === 'en') {
                 // 英文模式：英文基础层，中文悬停层
                 heroBase.innerHTML = `
-                    <p class="hero-greeting">Hello, welcome</p>
+                    <p class="hero-greeting">Hello, welcome to my homepage</p>
                     <h1 class="hero-reveal-title">
                         <span class="line">I am</span>
                         <span class="line">Jasper LIU</span>
@@ -2200,7 +2200,7 @@
                 `;
                 heroAlt.innerHTML = `
                     <canvas class="particle-canvas" id="particleCanvas"></canvas>
-                    <p class="hero-greeting">你好，欢迎</p>
+                    <p class="hero-greeting">你好，欢迎来到我的主页</p>
                     <h1 class="hero-reveal-title">
                         <span class="line">我是</span>
                         <span class="line">刘家硕</span>
@@ -2220,7 +2220,7 @@
             } else {
                 // 中文模式：中文基础层，英文悬停层
                 heroBase.innerHTML = `
-                    <p class="hero-greeting">你好，欢迎</p>
+                    <p class="hero-greeting">你好，欢迎来到我的主页</p>
                     <h1 class="hero-reveal-title">
                         <span class="line">我是</span>
                         <span class="line">刘家硕</span>
@@ -2228,7 +2228,7 @@
                 `;
                 heroAlt.innerHTML = `
                     <canvas class="particle-canvas" id="particleCanvas"></canvas>
-                    <p class="hero-greeting">Hello, welcome</p>
+                    <p class="hero-greeting">Hello, welcome to my homepage</p>
                     <h1 class="hero-reveal-title">
                         <span class="line">I am</span>
                         <span class="line">Jasper LIU</span>
